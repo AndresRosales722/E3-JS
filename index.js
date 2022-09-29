@@ -3,7 +3,7 @@ const pizzas = [
     {
       id: 1,
       nombre: "pizza comun",
-      imagen: "comun.jpg",
+      imagen: "/img/comun.jpg",
       precio: 500,
       ingredientes: ["queso", "salsa", "condimientos"],
     },
@@ -11,7 +11,7 @@ const pizzas = [
     {
       id: 2,
       nombre: "pizza especial",
-      imagen: "especial.jpg",
+      imagen: "/img/especial.jpg",
       precio: 700,
       ingredientes: ["queso", "salsa", "condimientos", "aceitunas", "paleta"],
     },
@@ -19,7 +19,7 @@ const pizzas = [
     {
       id: 3,
       nombre: "pizza vegana",
-      imagen: "https://hazlovegan.com/wp-content/uploads/2021/01/pizza-napoletana-vegana-3.jpg",
+      imagen: "/img/vegana.jpg",
       precio: 800,
       ingredientes: ["queso vegano", "salsa", "condimientos", "aceitunas"],
     },
@@ -27,7 +27,7 @@ const pizzas = [
     {
       id: 4,
       nombre: "pizza cuatro quesos",
-      imagen: "https://babycocina.com/wp-content/uploads/2020/02/pizza-cuatro-quesos.png",
+      imagen: "/img/queso.jpg",
       precio: 750,
       ingredientes: [
         "queso azul",
@@ -41,7 +41,7 @@ const pizzas = [
     {
       id: 5,
       nombre: "pizza fugazzeta",
-      imagen: "https://infoagro.com.ar/wp-content/uploads/2021/04/pizza-fogazza-1.jpg",
+      imagen: "/img/fugazzeta.jpg",
       precio: 600,
       ingredientes: ["queso", "salsa", "condimientos", "cebolla"],
     },
@@ -49,7 +49,7 @@ const pizzas = [
     {
       id: 6,
       nombre: "pizza italiana",
-      imagen: "https://www.hola.com/imagenes/cocina/recetas/20190911149183/pizza-margarita/0-717-935/pizza-m.jpg",
+      imagen: "/img/italiana.jpg",
       precio: 1000,
       ingredientes: [
         "queso premium",
@@ -104,7 +104,7 @@ const selectImage = (id) => {
 const showPizza = (pizza) => {
   $idPizza.textContent = `Eleccion N°: ${pizza.id}`
   $name.textContent = `Tipo de pizza: ${pizza.nombre}`
-  $ingredients.textContent = `Ingredientes: ${pizza.ingredientes.join(" - ")}`
+  $ingredients.textContent = `Ingredientes: ${pizza.ingredientes.join("-")}`
   $price.textContent = `Precio: $ ${pizza.precio}`
   $img.innerHTML = `<img src="img/${selectImage(pizza.id)}" alt="Imagen de la pizza">`
 }
@@ -125,9 +125,9 @@ const submitPizza = (e) => {
   const id = $input.value.trim()
 
   if (id === "") {
-      showError("No se ingresó ninguna ID")
+      showError("Por favor ingrese un ID")
   } else if (id < 1 || id > 6) {
-      showError(`No se encontró una pizza con ID ${id}`)
+      showError(`No se encontró una pizza con el ID ${id}`)
   } else {
       showSuccess()
       const pizza = pizzas[id - 1]
